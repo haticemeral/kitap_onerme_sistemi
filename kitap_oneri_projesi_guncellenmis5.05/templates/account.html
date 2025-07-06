@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - {{ user.username }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f1f2f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        header {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .profile-banner {
+            background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?fit=crop&w=1500&q=80') center/cover;
+            height: 200px;
+            border-radius: 12px;
+        }
+        .profile-card {
+            margin-top: -80px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .card-list {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        ul li {
+            list-style: none;
+        }
+        .btn-logout {
+            background-color: #ff4757;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .btn-logout:hover {
+            background-color: #e84118;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 Bir Kitap Seç Yeni Bir Dünya Keşfet!</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Ana Sayfa</a></li>
+                <li><a href="{{ url_for('kitap') }}">Kitaplar</a></li>
+                <li><a href="{{ url_for('etkinlik') }}">Etkinlikler</a></li>
+                <li><a href="{{ url_for('about') }}">Hakkımızda</a></li>
+                <li><a href="{{ url_for('iletisim') }}">İletişim</a></li>
+                <li><a href="{{ url_for('account') }}">Hesabım</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="profile-banner"></div>
+        <div class="profile-card shadow-sm">
+            <h2>{{ user.username }}</h2>
+            <p>📖 Kitaplarla dolu bir dünyaya adım atan tutkulu bir okur!</p>
+            <p><strong>Okuduğu Kitap Sayısı:</strong> {{ user.book_count }}</p>
+            <p><strong>Beğendiği Türler:</strong> {{ user.favorite_genres | join(', ') }}</p>
+            <a href="{{ url_for('logout') }}" class="btn btn-logout">Çıkış Yap</a>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="card-list">
+                    <h5 class="section-title">📚 Son Okuduğu Kitaplar</h5>
+                    <ul>
+                        {% for book in user.recent_books %}
+                            <li>📘 <strong>{{ book.title }}</strong> - {{ book.author }}</li>
+                        {% else %}
+                            <li>Henüz kitap okunmamış.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-list">
+                    <h5 class="section-title">✨ Sizin İçin Önerilen Kitaplar</h5>
+                    <ul>
+                        {% for book in user.recommended_books %}
+                            <li>📗 <strong>{{ book.title }}</strong> <span class="text-muted">({{ book.genre }})</span></li>
+                        {% else %}
+                            <li>Henüz öneri bulunmuyor.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-list">
+                    <h5 class="section-title">👥 Takip Ettiğiniz Arkadaşlar</h5>
+                    <ul>
+                        {% for friend in user.friends %}
+                            <li>👤 {{ friend }}</li>
+                        {% else %}
+                            <li>Hiç arkadaş eklenmemiş.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card-list">
+                    <h5 class="section-title">🧠 İlgi Alanlarına Göre Türler</h5>
+                    <p>{{ user.favorite_genres | join(', ') }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etkinlikler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        header {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .about-container h2 {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .about-container p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .icon {
+            font-size: 30px;
+            margin-right: 10px;
+            color: #6a11cb;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #2575fc;
+        }
+
+        .event-card {
+            background-color: #f0f8ff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+        }
+
+        .event-card h3 {
+            color: #333;
+        }
+
+        .event-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .event-card a {
+            text-decoration: none;
+            color: #2575fc;
+            font-weight: bold;
+        }
+
+        .event-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>📚 Etkinliklere Katılın, Kitap Dünyasına Dalın!</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Ana Sayfa</a></li>
+                <li><a href="{{ url_for('kitap') }}">Kitaplar</a></li>
+                <li><a href="{{ url_for('etkinlik') }}">Etkinlikler</a></li>
+                <li><a href="{{ url_for('about') }}">Hakkımızda</a></li>
+                <li><a href="{{ url_for('iletisim') }}">İletişim</a></li>
+                <li><a href="{{ url_for('account') }}">Hesabım</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-container">
+            <h2><span class="icon">📖</span> Etkinlikler</h2>
+            <p><strong>📚 Kitap Dünyasına Yolculuk Başlıyor!</strong></p>
+            <p>Bizi takip edin ve okumakla ilgili ilginç etkinliklere katılın! Kitaplar sadece sayfalardan ibaret değildir; onlar, 
+                farklı dünyalar keşfetmenin, yeni bakış açıları edinmenin ve derin sohbetler yapmanın kapılarını aralar. Bu sayfada, 
+                sizleri birbirinden heyecan verici etkinliklere davet ediyoruz.</p>
+            <p>Her etkinlik, kitabın derinliklerine inmek, yazarlarla tanışmak ve farklı bakış açılarını keşfetmek için harika 
+                bir fırsat sunuyor. Katılım sağlayarak kitap dünyasına adım atabilir, arkadaşlarınızla unutulmaz sohbetler yapabilir ve
+                 çeşitli etkinliklere dahil olabilirsiniz.</p>
+            <p>Aşağıda sizleri bekleyen etkinliklere göz atabilir ve katılmak için gerekli bağlantılara ulaşabilirsiniz. Her etkinlik için ayrı bir form aracılığıyla 
+                katılımınızı kaydedebilirsiniz. Şimdi, kitaplarla dolu bir yolculuğa çıkmaya hazır mısınız?</p>
+            <div class="event-card">
+                <h3>📚 "İnsan Nedir?" Kitap Konuşması</h3>
+                <p>Kitap hakkında derin bir sohbet için bize katılın. Hem kitapla ilgili düşüncelerinizi paylaşın, hem de yeni bakış açıları kazanın.</p>
+                <!-- Google Form Linki -->
+                <a href="https://forms.gle/C9kBoNT11ne3X1R96" target="_blank">Etkinliğe Katılın</a>
+            </div>
+            <div class="event-card">
+                <h3>📖 Gelecek Ayın Kitabı: "Zamanın Efendisi"</h3>
+                <p>Gelecek ay birlikte okuyacağımız kitap hakkında sohbet etmek için katılın. Hazırlanın, çünkü çok derin bir kitap olacak!</p>
+                <!-- Google Form Linki -->
+                <a href="https://forms.gle/C9kBoNT11ne3X1R96" target="_blank">Etkinliğe Katılın</a>
+            </div>
+            <div class="event-card">
+                <h3>📚 Yazarla Sohbet: "Kitaplar ve Yaşam"</h3>
+                <p>Yazarımızla kitapları ve yazarlık yolculuğunu konuşacağımız bir etkinlik. Katılın ve sorularınızı sorun!</p>
+                <!-- Google Form Linki -->
+                <a href="https://forms.gle/C9kBoNT11ne3X1R96" target="_blank">Etkinliğe Katılın</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

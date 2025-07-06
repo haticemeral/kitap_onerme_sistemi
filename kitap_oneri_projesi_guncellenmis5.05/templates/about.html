@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda - Kitap Öneri Sistemi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>📚 Bir Kitap Seç Yeni Bir Dünya Keşfet! 📚</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Ana Sayfa</a></li>
+                <li><a href="{{ url_for('kitap') }}">Kitaplar</a></li>
+                <li><a href="{{ url_for('etkinlik') }}">Etkinlikler</a></li>
+                <li><a href="{{ url_for('about') }}">Hakkımızda</a></li>
+                <li><a href="{{ url_for('iletisim') }}">İletişim</a></li>
+                <li><a href="{{ url_for('account') }}">Hesabım</a></li>  
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Hakkımızda</h2>
+            <p>Kitaplar… Kimi zaman bir kaçış, kimi zaman yepyeni bir başlangıç. Biz de bu yolculukları yalnız yaşamak istemeyenlerin buluştuğu bir kulübüz.</p>
+            <p><strong>Readly</strong> olarak; sayfalar arasında kaybolmayı, karakterlerle dost olmayı ve kelimelerin dünyasında kendimizi yeniden 
+                keşfetmeyi seviyoruz.</p>
+            <p>Burada sadece kitap okumuyoruz; tartışıyoruz, hissediyoruz, bazen bir cümlede durup uzun uzun düşünüyoruz.</p>
+            <p>Çünkü bizce okunan her kitap, paylaşıldığında daha anlamlı hale gelir.</p>
+            <p><strong>Hazırsan; hadi başlayalım.</strong><br>Çünkü her hikâye, anlatılmaya değerdir.</p>
+        </div>
+    </main>
+
+</body>
+</html>
